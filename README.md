@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-##TO-DO list in react
+## TO-DO list in react
 
 this project is a to-do list
 the to-do list have the functions to 
@@ -11,7 +11,7 @@ the to-do list have the functions to
 
 this to-do list use react, html, javaScript
 
-#To run 
+# To run 
 open the directory of the program and run the commands
 ```bash
 npm run build
