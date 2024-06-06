@@ -15,23 +15,20 @@ export default function Home() {
   let [uncheckTodosLength, setUncheckTodosLength] = useState(0)	
 
   function uncheckTodo(id) {
-    let uncheckedAmount = 0
     todos.map(todo => {
       if(todo.id === id){
-        todo.checked = !todo.checked 
+	todo.checked = !todo.checked
       }
-      if(!todo.checked){
-	uncheckedAmount++
-      }
-    })
-    setUncheckTodosLength(uncheckedAmount)
+    }) 
+    updateTodoList()
   }
 	
-  function updateTodoList() {
+  function showTodoList() {
     setTodosList(todos.map(todo => 
       <li key={todo.text}>
 	<input type='checkbox' id={todo.id} onClick={() => uncheckTodo(todo.id)}></input>
 	<label htmlFor={todo.id}>{todo.text}</label> 
+	<button onClick={() => deleteTodo(todo.id)}>X</button>
       </li>
     ))
   }
@@ -44,10 +41,27 @@ export default function Home() {
     todos = [...todos, {id: todoId, checked: false, text: todoText}]	
     todoId++
 
-    setUncheckTodosLength(uncheckTodosLength + 1)
-    setTodosLength(todos.length)
-
     updateTodoList()
+  }
+
+  function deleteTodo(id) {
+    todos = todos.filter(todo => {
+      return todo.id !== id
+    }) 
+    updateTodoList()
+  }
+
+  function updateTodoList(){
+    let uncheckedAmount = 0
+    todos.map(todo => { 
+      if(!todo.checked){
+	uncheckedAmount++
+      }
+    })
+    setUncheckTodosLength(uncheckedAmount)
+
+    showTodoList() 
+    setTodosLength(todos.length)
   }
 
   return ( 
