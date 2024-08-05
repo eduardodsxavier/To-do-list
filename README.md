@@ -1,3 +1,5 @@
+***This repository is a redo of the following project but with react native***
+
 **TO-DO List in React**
 
 **Overview:**
